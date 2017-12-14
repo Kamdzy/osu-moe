@@ -1,12 +1,72 @@
-﻿<Window x:Class="osu_moe.MainWindow"
+﻿<Controls:MetroWindow x:Class="osu_moe.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:osu_moe"
+        xmlns:viewModels="clr-namespace:osu_moe.ViewModels"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow"
+        WindowTransitionsEnabled="False"
+        WindowStartupLocation="CenterScreen"
+        Height="720"
+        Width="1280" >
+
+    <Controls:MetroWindow.DataContext>
+        <viewModels:ShellViewModel />
+    </Controls:MetroWindow.DataContext>
+
+
+    <Controls:MetroWindow.LeftWindowCommands>
+        <Controls:WindowCommands>
+            <Button x:Name="GoBackButton"
+                    Click="GoBack_OnClick">
+                <iconPacks:PackIconMaterial Kind="ArrowLeft" />
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.LeftWindowCommands>
+
     <Grid>
-        
+
+        <Grid.Resources>
+
+            <DataTemplate x:Key="MenuItemTemplate"
+                          DataType="{x:Type MenuItem}">
+                <Grid Height="48">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ContentControl Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Foreground="White"
+                                    Focusable="False"
+                                    Content="{Binding Icon}" />
+                    <TextBlock Grid.Column="1"
+                               VerticalAlignment="Center"
+                               FontSize="16"
+                               Foreground="White"
+                               Text="{Binding Text}" />
+                </Grid>
+            </DataTemplate>
+
+        </Grid.Resources>
+
+        <Controls:HamburgerMenu x:Name="osuMoeMenuControl"
+                                Foreground="White"
+                                PaneBackground="#FF444444"
+                                IsPaneOpen="False"
+                                ItemsSource="{Binding Menu}"
+                                OptionsItemsSource="{Binding OptionsMenu}"
+                                ItemClick="osuMoeMenuControl_OnItemClick"
+                                OptionsItemClick="osuMoeMenuControl_OnItemClick"
+                                ItemTemplate="{StaticResource MenuItemTemplate}"
+                                OptionsItemTemplate="{StaticResource MenuItemTemplate}"
+                                DisplayMode="CompactInline">
+        </Controls:HamburgerMenu>
+
     </Grid>
-</Window>
+</Controls:MetroWindow>
