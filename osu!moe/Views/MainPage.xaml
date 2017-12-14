@@ -6,14 +6,64 @@
       xmlns:local="clr-namespace:osu_moe.Views"
       Foreground="{DynamicResource TextBrush}"
       mc:Ignorable="d"
-      d:DesignHeight="720"
+      d:DesignHeight="690"
       d:DesignWidth="1280"
       Title="MainPage"
       KeepAlive="True">
 
-    <Grid x:Name="ProfileGrid" Background="{DynamicResource AccentColorBrush4}">
-        <TextBlock x:Name="UsernameBlock" HorizontalAlignment="Left" Margin="221,289,0,0" TextWrapping="Wrap" Text="{Binding Username}" VerticalAlignment="Top" FontSize="36" Foreground="White"/>
-        <Button Command="{Binding ApplyCommand}" Margin="531,652,566,10"></Button>
-        <Image  x:Name="Avatar" Source="{Binding Avatar}" HorizontalAlignment="Left" Height="100" Margin="44,70,0,0" VerticalAlignment="Top" Width="100"/>
+    <Grid x:Name="ProfileGrid" Background="{DynamicResource AccentColorBrush}">
+
+        <TextBlock x:Name="UsernameBlock" 
+                   HorizontalAlignment="Left" 
+                   Margin="212,34,0,0"
+                   TextWrapping="Wrap" 
+                   Text="{Binding Username}" 
+                   VerticalAlignment="Top" 
+                   FontSize="24" 
+                   Foreground="White" />
+        <Button Command="{Binding ApplyCommand}" 
+                Margin="534,642,563,0"
+                Content="Validate API">
+
+        </Button>
+        <Image
+            Source="{Binding UserFlag}" Margin="173,25,1027,609"
+        />
+        <Border BorderThickness="{Binding IsAvatarBorderEnabled}" 
+                HorizontalAlignment="Left" 
+                Height="130" 
+                Margin="38,34,0,0" 
+                VerticalAlignment="Top" 
+                Width="130">
+            <Border.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FF828282" Offset="0.57"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+        </Border>
+        <Image  x:Name="Avatar" 
+                Source="{Binding Avatar}" 
+                HorizontalAlignment="Left" 
+                Height="120" 
+                Margin="43,39,0,0" 
+                VerticalAlignment="Top" 
+                Width="120" />
+
+        <TextBlock x:Name="APIValidationPre"
+                   HorizontalAlignment="Left" Margin="0,666,0,0"
+                   TextWrapping="Wrap" Text="API Validation:"
+                   VerticalAlignment="Top" FontSize="18"
+                   Foreground="White" />
+        <TextBlock x:Name="APIValidation"
+                   HorizontalAlignment="Left"
+                   Margin="119,666,0,0"
+                   TextWrapping="Wrap"
+                   Text="{Binding APIValidation}"
+                   VerticalAlignment="Top"
+                   FontSize="18"
+                   Foreground="{Binding APIValidationBrush}" />
+
     </Grid>
 </Page>

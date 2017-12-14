@@ -13,29 +13,15 @@ using osu_moe.Services;
 
 namespace osu_moe.ViewModels
 {
-    class MainViewModel : ViewModelBase
+    class MainViewModel : ViewModelBase 
     {
-        private BitmapImage _avatar;
-        public BitmapImage Avatar
-        {
-            get => _avatar;
-            set => SetProperty(ref _avatar, value);
-        }
-
-        private string _username;
-        public string Username
-        {
-            get => _username;
-            set => SetProperty(ref _username, value);
-        }
-
         private DelegateCommand _applyCommand;
-
-        public DelegateCommand ApplyCommand
-        {
-            get => _applyCommand;
-            set => SetProperty(ref _applyCommand, value);
-        }
+        private BitmapImage _avatar;
+        private BitmapImage _userflag;
+        private string _username;
+        private string _apivalidation;
+        private string _apivalidationbrush;
+        private string _isavatarborderenabled;
 
         public MainViewModel()
         {
@@ -45,25 +31,68 @@ namespace osu_moe.ViewModels
             });
 
         }
+        public DelegateCommand ApplyCommand
+        {
+            get => _applyCommand;
+            set => SetProperty(ref _applyCommand, value);
+        }
 
+        public BitmapImage Avatar
+        {
+            get => _avatar;
+            set => SetProperty(ref _avatar, value);
+        }
+        public BitmapImage UserFlag
+        {
+            get => _userflag;
+            set => SetProperty(ref _userflag, value);
+        }
+
+        public string APIValidation
+        {
+            get => _apivalidation;
+            set => SetProperty(ref _apivalidation, value);
+        }
+        public string Username
+        {
+            get => _username;
+            set => SetProperty(ref _username, value);
+        }
+        public string APIValidationBrush
+        {
+            get => _apivalidationbrush;
+            set => SetProperty(ref _apivalidationbrush, value);
+        }
+
+        public string IsAvatarBorderEnabled
+        {
+            get => _isavatarborderenabled;
+            set => SetProperty(ref _isavatarborderenabled, value);
+        }
         public void Load(string apiKey)
         {
             try
             {
                 OsuClient osu = new OsuClient(apiKey);
                 var userinfo = osu.GetUser("Kamdzy", 0, 1);
-                var imgurl = userinfo[0].image;
-                var bimage = new BitmapImage(new Uri(imgurl));
+               
 
-                Avatar = bimage;
+                APIValidation = "Successful";
+                APIValidationBrush = "Green";
+
+                Avatar = new BitmapImage(new Uri(userinfo[0].image));
+                IsAvatarBorderEnabled = "5";
+                UserFlag = new BitmapImage(new Uri(userinfo[0].flag));
                 Username = userinfo[0].username;
+
+
             }
             catch (WebException)
             {
-                Username = "Invalid or no API Key Entered";
-
+                APIValidation = "Unsuccessful";
+                APIValidationBrush = "Red";
             }
-
+            
 
         }
     }
