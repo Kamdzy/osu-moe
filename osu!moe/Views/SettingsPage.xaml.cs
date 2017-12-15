@@ -26,8 +26,6 @@ namespace osu_moe.Views
         public SettingsPage()
         {
             InitializeComponent();
-            DataContext = new SettingsViewModel();
-
         }
     }
 }

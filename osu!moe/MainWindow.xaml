@@ -65,7 +65,16 @@
                                 OptionsItemClick="osuMoeMenuControl_OnItemClick"
                                 ItemTemplate="{StaticResource MenuItemTemplate}"
                                 OptionsItemTemplate="{StaticResource MenuItemTemplate}"
-                                DisplayMode="CompactInline">
+                                DisplayMode="Overlay">
+            <Controls:HamburgerMenu.HamburgerMenuHeaderTemplate>
+            <DataTemplate>
+                <TextBlock HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           FontSize="16"
+                           Foreground="White"
+                           Text="Menu" />
+            </DataTemplate>
+                </Controls:HamburgerMenu.HamburgerMenuHeaderTemplate>
         </Controls:HamburgerMenu>
 
     </Grid>

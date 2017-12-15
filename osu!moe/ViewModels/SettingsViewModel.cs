@@ -12,7 +12,7 @@ using osu_moe.Services;
 
 namespace osu_moe.ViewModels
 {
-    class SettingsViewModel : ViewModelBase
+    public class SettingsViewModel : ViewModelBase
     {
 
 

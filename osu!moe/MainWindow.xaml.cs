@@ -28,7 +28,6 @@ namespace osu_moe
         public MainWindow()
         {
             InitializeComponent();
-
             // Navigate to the home page.
             Navigation.Navigation.Frame = new Frame(); //SplitViewFrame;
             Navigation.Navigation.Frame.Navigated += SplitViewFrame_OnNavigated;

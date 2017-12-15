@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace osu_moe.Mvvm
 {
-    internal class DelegateCommand : ICommand
+    public class DelegateCommand : ICommand
     {
         private readonly Action _execute;
 

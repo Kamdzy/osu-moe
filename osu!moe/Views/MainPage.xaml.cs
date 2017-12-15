@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CSharpOsu;
 using CSharpOsu.Module;
+using MahApps.Metro.Controls.Dialogs;
 using osu_moe.ViewModels;
 using static osu_moe.Views.SettingsPage;
 
@@ -27,9 +28,7 @@ namespace osu_moe.Views
         public MainPage()
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
         }
-
     }
 
 }

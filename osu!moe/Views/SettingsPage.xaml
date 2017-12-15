@@ -10,7 +10,8 @@
       d:DesignHeight="720"
       d:DesignWidth="1280"
       Title="SettingsPage"
-      KeepAlive="True">
+      KeepAlive="True"
+      DataContext="{Binding Settings, Source={StaticResource VmLocator}}">
 
     <Grid Background="{DynamicResource AccentColorBrush2}">
 

@@ -13,7 +13,7 @@ using osu_moe.Services;
 
 namespace osu_moe.ViewModels
 {
-    class MainViewModel : ViewModelBase 
+    public class MainViewModel : ViewModelBase 
     {
         private DelegateCommand _applyCommand;
         private BitmapImage _avatar;
@@ -48,7 +48,7 @@ namespace osu_moe.ViewModels
             set => SetProperty(ref _userflag, value);
         }
 
-        public string APIValidation
+        public string ApiValidation
         {
             get => _apivalidation;
             set => SetProperty(ref _apivalidation, value);
@@ -58,7 +58,7 @@ namespace osu_moe.ViewModels
             get => _username;
             set => SetProperty(ref _username, value);
         }
-        public string APIValidationBrush
+        public string ApiValidationBrush
         {
             get => _apivalidationbrush;
             set => SetProperty(ref _apivalidationbrush, value);
@@ -77,8 +77,8 @@ namespace osu_moe.ViewModels
                 var userinfo = osu.GetUser("Kamdzy", 0, 1);
                
 
-                APIValidation = "Successful";
-                APIValidationBrush = "Green";
+                ApiValidation = "Successful";
+                ApiValidationBrush = "Green";
 
                 Avatar = new BitmapImage(new Uri(userinfo[0].image));
                 IsAvatarBorderEnabled = "5";
@@ -89,8 +89,8 @@ namespace osu_moe.ViewModels
             }
             catch (WebException)
             {
-                APIValidation = "Unsuccessful";
-                APIValidationBrush = "Red";
+                ApiValidation = "Unsuccessful";
+                ApiValidationBrush = "Red";
             }
             
 

@@ -9,9 +9,12 @@
       d:DesignHeight="690"
       d:DesignWidth="1280"
       Title="MainPage"
-      KeepAlive="True">
+      KeepAlive="True"
+      DataContext="{Binding Main, Source={StaticResource VmLocator}}">
 
-    <Grid x:Name="ProfileGrid" Background="{DynamicResource AccentColorBrush}">
+      
+
+        <Grid x:Name="ProfileGrid" Background="{DynamicResource AccentColorBrush}">
 
         <TextBlock x:Name="UsernameBlock" 
                    HorizontalAlignment="Left" 
@@ -26,9 +29,7 @@
                 Content="Validate API">
 
         </Button>
-        <Image
-            Source="{Binding UserFlag}" Margin="173,25,1027,609"
-        />
+        
         <Border BorderThickness="{Binding IsAvatarBorderEnabled}" 
                 HorizontalAlignment="Left" 
                 Height="130" 
@@ -43,6 +44,9 @@
                 </LinearGradientBrush>
             </Border.BorderBrush>
         </Border>
+
+        
+
         <Image  x:Name="Avatar" 
                 Source="{Binding Avatar}" 
                 HorizontalAlignment="Left" 
@@ -50,6 +54,8 @@
                 Margin="43,39,0,0" 
                 VerticalAlignment="Top" 
                 Width="120" />
+
+        <Image Source="{Binding UserFlag}" Margin="119,128,1117,531" />
 
         <TextBlock x:Name="APIValidationPre"
                    HorizontalAlignment="Left" Margin="0,666,0,0"
@@ -60,10 +66,10 @@
                    HorizontalAlignment="Left"
                    Margin="119,666,0,0"
                    TextWrapping="Wrap"
-                   Text="{Binding APIValidation}"
+                   Text="{Binding ApiValidation}"
                    VerticalAlignment="Top"
                    FontSize="18"
-                   Foreground="{Binding APIValidationBrush}" />
+                   Foreground="{Binding ApiValidationBrush}" />
 
     </Grid>
 </Page>
