@@ -1,0 +1,55 @@
+﻿<controls:MetroWindow x:Class="osu_moe.Views.MainView"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:tinyLittleMvvm="clr-namespace:TinyLittleMvvm;assembly=TinyLittleMvvm"
+                      xmlns:viewModels="clr-namespace:osu_moe.ViewModels"
+                      xmlns:core="Microsoft.Xaml.Interactions.Core"
+                      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                      xmlns:views="clr-namespace:osu_moe.Views"
+                      mc:Ignorable="d"
+                      d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
+                      Title="MainView" Height="720" Width="1280">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedViewCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Command="{Binding DataContext.HomeViewCommand, RelativeSource=
+    {RelativeSource AncestorType={x:Type views:MainView}}, Mode=OneWay}" Content="HomeView"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Command="{Binding DataContext.SecondViewCommand, RelativeSource=
+    {RelativeSource AncestorType={x:Type views:MainView}}, Mode=OneWay}" Content="SecondView" />
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Column="1">
+            <tinyLittleMvvm:ViewModelPresenter
+                ViewModel="{Binding ViewModel}"/>
+        </Grid>
+    </Grid>
+</controls:MetroWindow>
