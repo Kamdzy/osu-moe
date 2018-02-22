@@ -9,9 +9,24 @@
                       xmlns:core="Microsoft.Xaml.Interactions.Core"
                       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                       xmlns:views="clr-namespace:osu_moe.Views"
+                      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                       mc:Ignorable="d"
                       d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
-                      Title="MainView" Height="720" Width="1280">
+                      Style="{DynamicResource OsuMoeWindowStyle}"
+                      Title="osu!moe" Height="720" Width="1280" 
+                      WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/VS/Colors.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/VS/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="OsuMoeWindowStyle" TargetType="{x:Type controls:MetroWindow}"
+                   BasedOn="{StaticResource VSWindowStyleKey}" />
+            <Thickness x:Key="ControlMargin">0 5 0 0</Thickness>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedViewCommand}"/>
@@ -19,30 +34,72 @@
     </i:Interaction.Triggers>
 
     <Grid>
-        <Grid.RowDefinitions>
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="65"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition/>
                 <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Button Command="{Binding DataContext.HomeViewCommand, RelativeSource=
-    {RelativeSource AncestorType={x:Type views:MainView}}, Mode=OneWay}" Content="HomeView"/>
+                <Button Command="{Binding DataContext.HomeViewCommand, 
+                    RelativeSource={RelativeSource AncestorType={x:Type views:MainView}},
+                    Mode=OneWay}"
+                        Width="48"
+                        Height="48"
+                        Margin="4"
+                        Style="{DynamicResource MetroCircleButtonStyle}">
+                    <iconPacks:PackIconModern Width="20"
+                                              Height="20"
+                                              Kind="Home" />
+                </Button>
             </StackPanel>
 
             <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Button Command="{Binding DataContext.SecondViewCommand, RelativeSource=
-    {RelativeSource AncestorType={x:Type views:MainView}}, Mode=OneWay}" Content="SecondView" />
+                <Button Command="{Binding DataContext.SecondViewCommand, 
+                    RelativeSource={RelativeSource AncestorType={x:Type views:MainView}},
+                    Mode=OneWay}"
+                        Width="48"
+                        Height="48"
+                        Margin="4"
+                        Style="{DynamicResource MetroCircleButtonStyle}">
+                <iconPacks:PackIconModern Width="20"
+                                          Height="20"
+                                          Kind="Beer" />
+                </Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2"
+                        Margin="{StaticResource ControlMargin}"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+                <Button Width="48"
+                        Height="48"
+                        Margin="4"
+                        Style="{DynamicResource MetroCircleButtonStyle}">
+                    <iconPacks:PackIconModern Width="20"
+                                              Height="20"
+                                              Kind="City" />
+                </Button>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Width="48"
+                        Height="48"
+                        Margin="4"
+                        Style="{DynamicResource MetroCircleButtonStyle}">
+                    <iconPacks:PackIconModern Width="20"
+                                              Height="20"
+                                              Kind="Question" />
+                </Button>
             </StackPanel>
 
         </Grid>

@@ -6,15 +6,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
     xmlns:viewModels1="clr-namespace:osu_moe.ViewModels"
+    xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
     mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="300"
+    d:DesignHeight="180" d:DesignWidth="1278"
     d:DataContext="{d:DesignInstance viewModels1:OsuAccessKeyDialogViewModel}"
     Title="Input your api key">
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="1000*" MaxWidth="200" />
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -24,17 +26,17 @@
         <Label
             Grid.Row="0" Grid.Column="0"
             Content="Api key:"
-            Margin="0 4"/>
+            Margin="0 4" />
         <TextBox
             Grid.Row="0" Grid.Column="1"
             Text="{Binding Text}"
-            Margin="0 5"/>
+            Margin="0 5" />
 
         <StackPanel
             Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
             Orientation="Horizontal" HorizontalAlignment="Right"
             Margin="0 5 0 10">
-            <Button Command="{Binding OkCommand}" Content="OK" Margin="0 0 10 0" Width="100" IsDefault="True"/>
+            <Button Command="{Binding OkCommand}" Content="OK" Margin="0 0 10 0" Width="100" IsDefault="True" />
         </StackPanel>
 
     </Grid>

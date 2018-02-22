@@ -7,6 +7,6 @@
              xmlns:viewModels="clr-namespace:osu_moe.ViewModels"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance viewModels:HomeViewModel}"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="690" d:DesignWidth="1225">
     <Grid />
 </UserControl>
